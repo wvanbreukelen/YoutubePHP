@@ -106,7 +106,7 @@ class Video {
 
 	}
 
-	public function createAndPrint()
+	public function createAndShow()
 	{
 		// Create new video array
 		$video = array();
