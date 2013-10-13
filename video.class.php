@@ -23,7 +23,15 @@ class Video {
 		$this->videoWidth = $width;
 		$this->videoHeight = $heigth;
 
-		// Return array with the height and the width for the video
+		return $this;
+	}
+	
+	public function setSizeArray(array $array = array())
+	{
+		// Set the video height
+		$this->videoWidth = $array['width'];
+		$this->videoHeight = $array['height'];
+		
 		return $this;
 	}
 
