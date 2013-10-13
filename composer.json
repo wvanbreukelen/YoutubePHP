@@ -1,0 +1,10 @@
+{
+    "name":"wvanbreukelen/YoutubePHP",
+	"author":"WvanBreukelen",
+    "description":"A simple library for easy embed you YouTube Video's with PHP! ",
+    "keywords":[
+        "youtube",
+        "video",
+		"php"
+    ]
+}
