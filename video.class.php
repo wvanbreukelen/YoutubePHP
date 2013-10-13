@@ -15,7 +15,7 @@ class Video {
 	protected $autoplay = false;
 
 	protected $options = null;
-	protected $privacy = true;
+	protected $privacy = false;
 
 	public function setSize($width, $heigth)
 	{
@@ -24,43 +24,49 @@ class Video {
 		$this->videoHeight = $heigth;
 
 		// Return array with the height and the width for the video
-		return array('height' => $this->videoHeight, 'width' => $this->videoWidth);
+		return $this;
 	}
 
 	public function setSource($source)
 	{
 		// Set the YouTube source
 		$this->source = $source;
+		return $this;
 	}
 
 	public function blockFullscreen()
 	{
 		// Set allowFullscreen to false, so the client is unable to view to video fullscreen
 		$this->allowFullscreen = false;
+		return $this;
 	}
 
 	public function enablePrivacy($privacy)
 	{
 		// Enable YouTube Video privacy mode
 		$this->privacy = $privacy;
+		return $this;
 	}
 
 	public function enableAutoplay($autoplay)
 	{
 		// Enable YouTube Video autoplay
 		$this->autoplay = $autoplay;
+		return $this;
 	}
 
 	public function setFrameborder($frameborder)
 	{
 		// Set frameborder around the video
 		$this->frameborder = $frameborder;
+		return $this;
 	}
 
 	public function setOptions(array $options = array())
 	{
 		// Set options 
 		$this->options = $options;
+		return $this;
 	}
 
 	public function create()
@@ -105,7 +111,7 @@ class Video {
 		$video['frameborder'] = $this->frameborder;
 
 		// Set video source
-		$video['src'] = $this->source;
+		$video['src'] = $this->buildUrl($this->source);
 
 		// Allowfullscreen set
 		$video['allowFullscreen'] = $this->allowFullscreen;
@@ -113,19 +119,20 @@ class Video {
 		// Set the additional options
 		$video['options'] = $this->options;
 		// Assign elements to the video
-		$html = $this->assign($video, $options);
+		$html = $this->assign($video, $video['options']);
 
 		// Print the frame
 		echo $html;
 
 		// Return true
-		return true;
+		return $this;
 	}
 
 	private function buildUrl($originalUrl)
 	{
 		$adds = array();
-		$base = $originalUrl;
+		$pieces = explode('watch?v=', $originalUrl);
+		$base = $pieces[0] . 'embed/' . $pieces[1];
 
 		// Check if privacy mode is enabled
 		if ($this->privacy)
@@ -134,6 +141,7 @@ class Video {
 			// Rebuild the source url so it is compatible with YouTube privacy mode
 			$url = $originalUrl;
 			$pieces = explode('youtube', $url);
+			print_r($pieces);
 			$url = $pieces[0] . 'youtube-nocookie' . $pieces[1];
 
 			// Store rebuilded url
