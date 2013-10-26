@@ -149,7 +149,6 @@ class Video {
 			// Rebuild the source url so it is compatible with YouTube privacy mode
 			$url = $originalUrl;
 			$pieces = explode('youtube', $url);
-			print_r($pieces);
 			$url = $pieces[0] . 'youtube-nocookie' . $pieces[1];
 
 			// Store rebuilded url
