@@ -21,9 +21,6 @@ echo $video->create();
 	
 ```
 
-Methods
--------
-
 Chaining method
 
 ```php
@@ -41,6 +38,7 @@ $video
 ```
 
 Available Methods
+-----------------
 
 ```
 $video->setSource(width, height);
