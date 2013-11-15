@@ -21,6 +21,9 @@ echo $video->create();
 	
 ```
 
+Methods
+-------
+
 Chaining method
 
 ```php
