@@ -36,3 +36,28 @@ $video
 	->createAndShow();
 	
 ```
+
+Available Methods
+
+```
+$video->setSource(width, height);
+```
+
+Sets the source of the YouTube Video, do not enter any embedded url from YouTube. The url will be converted automatically
+
+
+
+```
+$video->setSize(width, height);
+```
+
+Sets the width and the height of the YouTube Video
+
+```
+$video->createAndShow(width, height);
+```
+
+Create the video and show it to the browser's screen
+
+
+
