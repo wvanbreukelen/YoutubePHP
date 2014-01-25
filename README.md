@@ -3,6 +3,8 @@ YoutubePHP
 
 A simple library for easy embed you YouTube Video's with PHP!
 
+Warning! I haven't got the time yet to test everything for bugs, so maybe you can experience some issues
+
 Samples
 -------
 
