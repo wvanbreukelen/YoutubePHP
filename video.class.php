@@ -84,7 +84,7 @@ class Video {
 
 		// Set video width & height
 		$video['width'] = $this->videoWidth;
-		$video['heigth'] = $this->videoHeight;
+		$video['height'] = $this->videoHeight;
 
 		// Set frameborder
 		$video['frameborder'] = $this->frameborder;
