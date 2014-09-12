@@ -17,21 +17,11 @@ class Video {
 	protected $options = null;
 	protected $privacy = false;
 
-	public function setSize($width, $heigth)
+	public function setSizes(array $sizes = array())
 	{
-		// Set the video height
-		$this->videoWidth = $width;
-		$this->videoHeight = $heigth;
+		$this->videoWidth = $sizes['width'];
+		$this->videoHeight = $sizes['height'];
 
-		return $this;
-	}
-	
-	public function setSizeArray(array $array = array())
-	{
-		// Set the video height
-		$this->videoWidth = $array['width'];
-		$this->videoHeight = $array['height'];
-		
 		return $this;
 	}
 
@@ -79,24 +69,7 @@ class Video {
 
 	public function create()
 	{
-		// Create new video array
-		$video = array();
-
-		// Set video width & height
-		$video['width'] = $this->videoWidth;
-		$video['height'] = $this->videoHeight;
-
-		// Set frameborder
-		$video['frameborder'] = $this->frameborder;
-
-		// Build the video source
-		$video['src'] = $this->buildUrl($this->source);
-
-		// Set video options
-		$video['options'] = $this->options;
-
-		// Set allow fullscreen
-		$video['allowFullscreen'] = $this->allowFullscreen;
+		$video = $this->setup();
 
 		// Assign all elements to a new HTML Frame
 		$html = $this->assign($video, $video['options']);
@@ -134,6 +107,30 @@ class Video {
 
 		// Return true
 		return $this;
+	}
+	
+	protected function setup()
+	{
+		// Create new video array
+		$video = array();
+
+		// Set video width & height
+		$video['width'] = $this->videoWidth;
+		$video['height'] = $this->videoHeight;
+
+		// Set frameborder
+		$video['frameborder'] = $this->frameborder;
+
+		// Build the video source
+		$video['src'] = $this->buildUrl($this->source);
+
+		// Set video options
+		$video['options'] = $this->options;
+
+		// Set allow fullscreen
+		$video['allowFullscreen'] = $this->allowFullscreen;
+		
+		return $video;
 	}
 
 	private function buildUrl($originalUrl)
